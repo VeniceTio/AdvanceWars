@@ -1,0 +1,187 @@
+﻿  game.c
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(14,21): error C2143: erreur de syntaxe : absence de ')' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(14,21): error C2143: erreur de syntaxe : absence de '{' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(14,31): error C2371: 'nodeSDL' : redéfinition ; types de base différents
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(6): message : voir la déclaration de 'nodeSDL'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(14,38): error C2143: erreur de syntaxe : absence de ';' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(14,49): error C2059: erreur de syntaxe : ')'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(15,25): error C2143: erreur de syntaxe : absence de ')' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(15,25): error C2143: erreur de syntaxe : absence de '{' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(15,33): error C2059: erreur de syntaxe : ')'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\unit.h(38,37): error C2065: 'NB_GROUND' : identificateur non déclaré
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\unit.h(38,37): error C2057: expression constante attendue
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\unit.h(38,37): error C2466: impossible d'allouer un tableau de taille constante 0
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\unit.h(50,2): error C2061: erreur de syntaxe : identificateur 'dijkstraNode'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\unit.h(60,1): error C2059: erreur de syntaxe : '}'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(11,40): error C2065: 'NB_GROUND' : identificateur non déclaré
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(11,40): error C2057: expression constante attendue
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(12,36): error C2229: struct 'sGame' a un tableau de taille zéro non conforme
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(17,2): error C2061: erreur de syntaxe : identificateur 'graph'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(30,1): error C2059: erreur de syntaxe : '}'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(48,29): error C2143: erreur de syntaxe : absence de ')' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(48,29): error C2143: erreur de syntaxe : absence de '{' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(48,40): error C2371: 'unit' : redéfinition ; types de base différents
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\unit.h(6): message : voir la déclaration de 'unit'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(48,44): error C2143: erreur de syntaxe : absence de ';' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(48,52): error C2059: erreur de syntaxe : ')'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(23,34): error C2065: 'NB_GROUND' : identificateur non déclaré
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(23,23): warning C4018: '<' : incompatibilité signed/unsigned
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(29,12): error C2037: la partie gauche de 'm_groundSpritesTab' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(29,49): warning C4013: 'GetLayerIDFromChar' non défini(e) ; extern retournant int pris par défaut
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(31,12): error C2037: la partie gauche de 'm_groundSpritesTab' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(31,96): error C2037: la partie gauche de 'm_groundSpritesTab' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(31,131): error C2440: 'fonction' : impossible de convertir de 'SDL_Rect' en 'SDL_Surface *'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(31,131): warning C4024: 'LoadSpriteWithImage' : types différents pour le paramètre formel et réel 2
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(31,137): error C2198: 'LoadSpriteWithImage' : pas assez d'arguments pour un appel
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(58,40): error C2027: utilisation du type non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(9): message : voir la déclaration de 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(62,10): error C2037: la partie gauche de 'm_font' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(63,10): error C2037: la partie gauche de 'm_fontHP' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(64,10): error C2037: la partie gauche de 'm_textP1' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(64,52): error C2037: la partie gauche de 'm_font' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(64,70): warning C4133: 'fonction' : types incompatibles - de 'char [9]' à 'TTF_Font *'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(64,94): error C2440: 'fonction' : impossible de convertir de 'SDL_Color' en 'const char *'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(64,94): warning C4024: 'TTF_RenderText_Blended' : types différents pour le paramètre formel et réel 2
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(64,94): error C2198: 'TTF_RenderText_Blended' : pas assez d'arguments pour un appel
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(65,10): error C2037: la partie gauche de 'm_textP2' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(65,52): error C2037: la partie gauche de 'm_font' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(65,70): warning C4133: 'fonction' : types incompatibles - de 'char [9]' à 'TTF_Font *'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(65,94): error C2440: 'fonction' : impossible de convertir de 'SDL_Color' en 'const char *'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(65,94): warning C4024: 'TTF_RenderText_Blended' : types différents pour le paramètre formel et réel 2
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(65,94): error C2198: 'TTF_RenderText_Blended' : pas assez d'arguments pour un appel
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(70,10): error C2037: la partie gauche de 'm_graph' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(70,37): warning C4013: 'LoadGraphFromFile' non défini(e) ; extern retournant int pris par défaut
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(71,15): error C2037: la partie gauche de 'm_graph' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(74,26): error C2037: la partie gauche de 'm_graph' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(74,53): error C2037: la partie gauche de 'm_graph' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(76,34): error C2037: la partie gauche de 'm_groundSpritesTab' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(76,61): error C2037: la partie gauche de 'm_graph' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(76,91): error C2198: 'CopySprite' : pas assez d'arguments pour un appel
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(77,25): error C2037: la partie gauche de 'm_graph' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(77,66): error C2037: la partie gauche de 'm_graph' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(77,97): error C2198: 'MoveSprite' : pas assez d'arguments pour un appel
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(78,13): warning C4013: 'SetNodeSDL' non défini(e) ; extern retournant int pris par défaut
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(78,22): error C2037: la partie gauche de 'm_graph' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(84,10): error C2037: la partie gauche de 'm_surfaceWalk' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(85,23): error C2037: la partie gauche de 'm_surfaceWalk' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(85,50): warning C4047: 'fonction' : les niveaux d'indirection de 'SDL_Surface *' et de 'int' sont différents
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(85,50): warning C4024: 'SDL_SetAlpha' : types différents pour le paramètre formel et réel 1
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(85,55): error C2198: 'SDL_SetAlpha' : pas assez d'arguments pour un appel
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(87,10): error C2037: la partie gauche de 'm_playerTurn' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(98,26): error C2037: la partie gauche de 'm_graph' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(100,27): error C2037: la partie gauche de 'm_graph' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(102,27): warning C4013: 'GetNodeSDL' non défini(e) ; extern retournant int pris par défaut
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(102,36): error C2037: la partie gauche de 'm_graph' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(116,13): error C2037: la partie gauche de 'm_playerTurn' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(117,27): error C2037: la partie gauche de 'm_textP1' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(117,51): warning C4133: 'fonction' : types incompatibles - de 'SDL_Surface *' à 'SDL_Rect *'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(117,57): error C2198: 'SDL_UpperBlit' : pas assez d'arguments pour un appel
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(121,34): error C2037: la partie gauche de 'm_textP2' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(124,27): error C2037: la partie gauche de 'm_textP2' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(124,51): warning C4133: 'fonction' : types incompatibles - de 'SDL_Surface *' à 'SDL_Rect *'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(124,58): warning C4133: 'fonction' : types incompatibles - de 'SDL_Rect *' à 'SDL_Surface *'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(124,58): error C2198: 'SDL_UpperBlit' : pas assez d'arguments pour un appel
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(102,1): warning C4047: 'initialisation' : les niveaux d'indirection de 'nodeSDL *' et de 'int' sont différents
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(131,18): error C2037: la partie gauche de 'm_playerTurn' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(133,33): error C2037: la partie gauche de 'm_players' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(135,15): error C2037: la partie gauche de 'm_players' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(136,19): error C2037: la partie gauche de 'm_players' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(136,47): warning C4033: 'GetSelectedUnit' doit retourner une valeur
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(150,29): error C2143: erreur de syntaxe : absence de ')' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(150,29): error C2143: erreur de syntaxe : absence de '{' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(150,40): error C2371: 'unit' : redéfinition ; types de base différents
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\unit.h(6): message : voir la déclaration de 'unit'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(150,44): error C2143: erreur de syntaxe : absence de ';' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(150,52): error C2059: erreur de syntaxe : ')'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.c(151,1): error C2054: '(' attendu après 'p_unit'
+  graph_SDL.c
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(14,21): error C2143: erreur de syntaxe : absence de ')' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(14,21): error C2143: erreur de syntaxe : absence de '{' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(14,31): error C2371: 'nodeSDL' : redéfinition ; types de base différents
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(6): message : voir la déclaration de 'nodeSDL'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(14,38): error C2143: erreur de syntaxe : absence de ';' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(14,49): error C2059: erreur de syntaxe : ')'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(15,25): error C2143: erreur de syntaxe : absence de ')' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(15,25): error C2143: erreur de syntaxe : absence de '{' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(15,33): error C2059: erreur de syntaxe : ')'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.c(16,21): error C2143: erreur de syntaxe : absence de ')' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.c(16,21): error C2143: erreur de syntaxe : absence de '{' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.c(16,31): error C2371: 'nodeSDL' : redéfinition ; types de base différents
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(6): message : voir la déclaration de 'nodeSDL'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.c(16,38): error C2143: erreur de syntaxe : absence de ';' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.c(16,49): error C2059: erreur de syntaxe : ')'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.c(17,1): error C2054: '(' attendu après 'p_nodeSDL'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.c(21,25): error C2143: erreur de syntaxe : absence de ')' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.c(21,25): error C2143: erreur de syntaxe : absence de '{' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.c(21,33): error C2059: erreur de syntaxe : ')'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.c(22,1): error C2054: '(' attendu après 'p_node'
+  main.c
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(14,21): error C2143: erreur de syntaxe : absence de ')' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(14,21): error C2143: erreur de syntaxe : absence de '{' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(14,31): error C2371: 'nodeSDL' : redéfinition ; types de base différents
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(6): message : voir la déclaration de 'nodeSDL'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(14,38): error C2143: erreur de syntaxe : absence de ';' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(14,49): error C2059: erreur de syntaxe : ')'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(15,25): error C2143: erreur de syntaxe : absence de ')' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(15,25): error C2143: erreur de syntaxe : absence de '{' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(15,33): error C2059: erreur de syntaxe : ')'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\unit.h(38,37): error C2065: 'NB_GROUND' : identificateur non déclaré
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\unit.h(38,37): error C2057: expression constante attendue
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\unit.h(38,37): error C2466: impossible d'allouer un tableau de taille constante 0
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\unit.h(50,2): error C2061: erreur de syntaxe : identificateur 'dijkstraNode'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\unit.h(60,1): error C2059: erreur de syntaxe : '}'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(11,40): error C2065: 'NB_GROUND' : identificateur non déclaré
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(11,40): error C2057: expression constante attendue
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(12,36): error C2229: struct 'sGame' a un tableau de taille zéro non conforme
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(17,2): error C2061: erreur de syntaxe : identificateur 'graph'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(30,1): error C2059: erreur de syntaxe : '}'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(48,29): error C2143: erreur de syntaxe : absence de ')' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(48,29): error C2143: erreur de syntaxe : absence de '{' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(48,40): error C2371: 'unit' : redéfinition ; types de base différents
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\unit.h(6): message : voir la déclaration de 'unit'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(48,44): error C2143: erreur de syntaxe : absence de ';' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(48,52): error C2059: erreur de syntaxe : ')'
+  renderLoop.c
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(14,21): error C2143: erreur de syntaxe : absence de ')' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(14,21): error C2143: erreur de syntaxe : absence de '{' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(14,31): error C2371: 'nodeSDL' : redéfinition ; types de base différents
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(6): message : voir la déclaration de 'nodeSDL'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(14,38): error C2143: erreur de syntaxe : absence de ';' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(14,49): error C2059: erreur de syntaxe : ')'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(15,25): error C2143: erreur de syntaxe : absence de ')' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(15,25): error C2143: erreur de syntaxe : absence de '{' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\graph_SDL.h(15,33): error C2059: erreur de syntaxe : ')'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\unit.h(38,37): error C2065: 'NB_GROUND' : identificateur non déclaré
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\unit.h(38,37): error C2057: expression constante attendue
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\unit.h(38,37): error C2466: impossible d'allouer un tableau de taille constante 0
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\unit.h(50,2): error C2061: erreur de syntaxe : identificateur 'dijkstraNode'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\unit.h(60,1): error C2059: erreur de syntaxe : '}'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(11,40): error C2065: 'NB_GROUND' : identificateur non déclaré
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(11,40): error C2057: expression constante attendue
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(12,36): error C2229: struct 'sGame' a un tableau de taille zéro non conforme
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(17,2): error C2061: erreur de syntaxe : identificateur 'graph'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(30,1): error C2059: erreur de syntaxe : '}'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(48,29): error C2143: erreur de syntaxe : absence de ')' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(48,29): error C2143: erreur de syntaxe : absence de '{' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(48,40): error C2371: 'unit' : redéfinition ; types de base différents
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\unit.h(6): message : voir la déclaration de 'unit'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(48,44): error C2143: erreur de syntaxe : absence de ';' avant '*'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\game.h(48,52): error C2059: erreur de syntaxe : ')'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\renderLoop.c(45,29): error C2037: la partie gauche de 'm_mousePosX' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\renderLoop.c(45,51): error C2037: la partie gauche de 'm_mousePosY' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\renderLoop.c(45,62): error C2198: 'SDL_GetMouseState' : pas assez d'arguments pour un appel
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\renderLoop.c(46,10): error C2037: la partie gauche de 'm_lclic' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\renderLoop.c(47,10): error C2037: la partie gauche de 'm_rclic' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\renderLoop.c(67,13): error C2037: la partie gauche de 'm_playerTurn' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\renderLoop.c(67,37): error C2037: la partie gauche de 'm_playerTurn' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\renderLoop.c(89,13): error C2037: la partie gauche de 'm_lclic' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\renderLoop.c(93,13): error C2037: la partie gauche de 'm_rclic' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\renderLoop.c(114,14): error C2037: la partie gauche de 'm_lclic' indique un struct/union non défini 'sGame'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\renderLoop.c(119,14): error C2037: la partie gauche de 'm_rclic' indique un struct/union non défini 'sGame'
+  unit.c
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\unit.h(38,37): error C2065: 'NB_GROUND' : identificateur non déclaré
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\unit.h(38,37): error C2057: expression constante attendue
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\unit.h(38,37): error C2466: impossible d'allouer un tableau de taille constante 0
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\unit.h(50,2): error C2061: erreur de syntaxe : identificateur 'dijkstraNode'
+D:\Users\Aurelien\Desktop\basecode_ProjetC\AdvanceWars\unit.h(60,1): error C2059: erreur de syntaxe : '}'
+  Génération de code en cours...
