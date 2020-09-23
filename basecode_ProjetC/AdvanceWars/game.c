@@ -1,4 +1,5 @@
 #include "game.h"
+#define TAILLE_MAX 10000
 
 int LoadSprites(game* p_game, const char* p_path)
 {
@@ -39,6 +40,16 @@ int LoadSprites(game* p_game, const char* p_path)
 int LoadUnitType(game* p_game, const char* p_path)
 {
 	// TODO :	Chargement des types d'unités
+	// TODO :	Chargement des types d'unités
+	FILE* file = NULL;
+	file = fopen(p_path, "r");
+	char string[TAILLE_MAX] = "";
+	char delim[] = " ";
+
+	if (file != NULL)
+	{
+		p_game->m_unitTab[0];
+	}
 
 	return 1;
 }

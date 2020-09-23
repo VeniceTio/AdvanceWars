@@ -145,7 +145,7 @@ xcopy /I /Y "$(SolutionDir)AdvanceWars\data" "$(SolutionDir)bin\x64\data\"</Comm
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>../SDL-1.2.15/lib/$(Platform)/*.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>../SDL-1.2.15/lib/$(Platform)/*.lib;../AdvanceWars/*.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy /Y "$(SolutionDir)SDL-1.2.15\bin\Win32\*.dll" "$(SolutionDir)bin\"
@@ -185,6 +185,7 @@ xcopy /I /Y "$(SolutionDir)AdvanceWars\data" "$(SolutionDir)bin\x64\data\"</Comm
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h" />
+    <ClInclude Include="graph.h" />
     <ClInclude Include="graph_SDL.h" />
     <ClInclude Include="renderLoop.h" />
     <ClInclude Include="sprite.h" />

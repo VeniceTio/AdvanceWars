@@ -2,6 +2,7 @@
 
 //#include "../GraphLib/include/graph.h"
 #include "sprite.h"
+#include "graph.h"
 
 typedef struct sNodeSDL nodeSDL;
 
