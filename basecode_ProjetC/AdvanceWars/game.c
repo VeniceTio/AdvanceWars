@@ -90,7 +90,33 @@ int LoadUnitType(game* p_game, const char* p_path)
 int LoadPlayer(game* p_game, int p_idPLayer, const char* p_path)
 {
 	// TODO :	Chargement des joueurs
+	FILE* file = NULL;
+	file = fopen_s(&file, p_path, "r");
 
+	if (!file)
+		return -1;
+	
+	if (p_idPLayer == 0)
+	{
+		fscanf_s(file, "%d\n", &p_game->m_players[0]->m_nbUnit); //nombre d'unités
+		//p_game->m_players[0]->m_units = (unit**)malloc(sizeof((unit*) * &(p_game->m_players[0]->m_nbUnit)));
+		for (int i = 0; i < p_game->m_players[0]->m_nbUnit; i++)
+		{
+			fscanf_s(file, "%d %d %d\n", &p_game->m_players[0]->m_units[i]->m_type, &p_game->m_players[0]->m_units[i]->m_posX, &p_game->m_players[0]->m_units[i]->m_posY); //TypeUnité / posX / posY
+		}
+	}
+
+	if (p_idPLayer == 1)
+	{
+		fscanf_s(file, "%d\n", &p_game->m_players[1]->m_nbUnit); //nombre d'unités
+		//p_game->m_players[0]->m_units = (unit**)malloc(sizeof((unit*) * &(p_game->m_players[0]->m_nbUnit)));
+		for (int i = 0; i < p_game->m_players[1]->m_nbUnit; i++)
+		{
+			fscanf_s(file, "%d %d %d\n", &p_game->m_players[1]->m_units[i]->m_type, &p_game->m_players[1]->m_units[i]->m_posX, &p_game->m_players[1]->m_units[i]->m_posY); //TypeUnité / posX / posY
+		}
+	}
+
+	fclose(file);
 	return 1;
 }
 
