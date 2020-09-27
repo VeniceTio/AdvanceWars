@@ -41,12 +41,16 @@ int LoadUnitType(game* p_game, const char* p_path)
 {
 	// TODO :	Chargement des types d'unités
 	FILE* file = NULL;
-	file = fopen_s(&file,p_path, "r");
+	file = fopen_s(&file, p_path, "r");
 	SDL_Rect src, src2, dest, dest2;
 	char stringSprite[255];
 
 	if (!file)
+	{
+		printf("ERREUR LOADUNIT\n");
 		return -1;
+	}
+		
 
 	for (int i = 0; i < NB_UNIT_TYPE; i++)
 	{
@@ -79,7 +83,7 @@ int LoadUnitType(game* p_game, const char* p_path)
 		else
 		{
 			p_game->m_unitTab[i]->m_sprite[0] = LoadSpriteWithImage(stringSprite, p_game->m_unitTab[0]->m_sprite[0]->m_image, src, dest);
-			p_game->m_unitTab[i]->m_sprite[1] = LoadSpriteWithImage(stringSprite, p_game->m_unitTab[0]->m_sprite[0]->m_image, src2, dest2);
+			p_game->m_unitTab[i]->m_sprite[1] = LoadSpriteWithImage(stringSprite, p_game->m_unitTab[0]->m_sprite[1]->m_image, src2, dest2);
 		}
 	}
 
@@ -90,33 +94,46 @@ int LoadUnitType(game* p_game, const char* p_path)
 int LoadPlayer(game* p_game, int p_idPLayer, const char* p_path)
 {
 	// TODO :	Chargement des joueurs
-	FILE* file = NULL;
-	file = fopen_s(&file, p_path, "r");
+	FILE* fileLoadPlayer = NULL;
+	fileLoadPlayer = fopen(p_path, "r");
 
-	if (!file)
+	for (int i = 0; i < 2; i++)
+	{
+		p_game->m_players[i] = (player*)malloc(sizeof(player));
+		if (!p_game->m_players[i])
+			return -1;
+	}
+
+	int nbUnit = 0;
+	fscanf_s(fileLoadPlayer, "%d\n", &nbUnit); //nombre d'unités
+	p_game->m_players[p_idPLayer]->m_nbUnit = nbUnit;
+	printf("NbUnit : %d\n", nbUnit);
+
+	if (!fileLoadPlayer)
+	{
+		printf("ERREUR");
 		return -1;
-	
-	if (p_idPLayer == 0)
+	}
+		
+	p_game->m_players[p_idPLayer]->m_units = (unit**)calloc(nbUnit, sizeof(unit*));
+	for (int i = 0; i < nbUnit; i++)
 	{
-		fscanf_s(file, "%d\n", &p_game->m_players[0]->m_nbUnit); //nombre d'unités
-		//p_game->m_players[0]->m_units = (unit**)malloc(sizeof((unit*) * &(p_game->m_players[0]->m_nbUnit)));
-		for (int i = 0; i < p_game->m_players[0]->m_nbUnit; i++)
-		{
-			fscanf_s(file, "%d %d %d\n", &p_game->m_players[0]->m_units[i]->m_type, &p_game->m_players[0]->m_units[i]->m_posX, &p_game->m_players[0]->m_units[i]->m_posY); //TypeUnité / posX / posY
-		}
+		p_game->m_players[p_idPLayer]->m_units[i] = (unit*)calloc(1,sizeof(unit));
+		if (!p_game->m_players[p_idPLayer]->m_units[i])
+			return -1;
 	}
 
-	if (p_idPLayer == 1)
+	int typeUnit;
+	int posX, posY;
+	for (int i = 0; i < p_game->m_players[0]->m_nbUnit; i++)
 	{
-		fscanf_s(file, "%d\n", &p_game->m_players[1]->m_nbUnit); //nombre d'unités
-		//p_game->m_players[0]->m_units = (unit**)malloc(sizeof((unit*) * &(p_game->m_players[0]->m_nbUnit)));
-		for (int i = 0; i < p_game->m_players[1]->m_nbUnit; i++)
-		{
-			fscanf_s(file, "%d %d %d\n", &p_game->m_players[1]->m_units[i]->m_type, &p_game->m_players[1]->m_units[i]->m_posX, &p_game->m_players[1]->m_units[i]->m_posY); //TypeUnité / posX / posY
-		}
+		fscanf_s(fileLoadPlayer, "%d %d %d\n", &typeUnit, &posX, &posY); //TypeUnité / posX / posY
+		p_game->m_players[p_idPLayer]->m_units[i]->m_type = p_game->m_unitTab[typeUnit];
+		p_game->m_players[p_idPLayer]->m_units[i]->m_posX = posX;
+		p_game->m_players[p_idPLayer]->m_units[i]->m_posY = posY;
 	}
 
-	fclose(file);
+	fclose(fileLoadPlayer);
 	return 1;
 }
 
@@ -179,7 +196,18 @@ void DrawGame(SDL_Surface* p_window, game* p_game)
 	
 	
 	// TODO :	Affichage des unités
-
+	for (int i = 0; i < 2; i++)
+	{
+		//printf("%d", p_game->m_players[0]->m_nbUnit);
+		for (int j = 0; j < p_game->m_players[i]->m_nbUnit; j++)
+		{
+			//DrawSprite(p_window, p_game->m_players[i]->m_units[j]->m_type->m_sprite[0]);
+			/*if (p_game->m_players[i]->m_units[j]->m_hp > 0)
+			{
+				DrawSprite(p_window, p_game->m_players[i]->m_units[j]->m_type->m_sprite[0]);
+			}*/
+		}
+	}
 	
 
 	// Affichage du texte
