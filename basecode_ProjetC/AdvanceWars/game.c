@@ -40,17 +40,50 @@ int LoadSprites(game* p_game, const char* p_path)
 int LoadUnitType(game* p_game, const char* p_path)
 {
 	// TODO :	Chargement des types d'unités
-	// TODO :	Chargement des types d'unités
 	FILE* file = NULL;
-	file = fopen(p_path, "r");
-	char string[TAILLE_MAX] = "";
-	char delim[] = " ";
+	file = fopen_s(&file,p_path, "r");
+	SDL_Rect src, src2, dest, dest2;
+	char stringSprite[255];
 
-	if (file != NULL)
+	if (!file)
+		return -1;
+
+	for (int i = 0; i < NB_UNIT_TYPE; i++)
 	{
-		p_game->m_unitTab[0];
+		p_game->m_unitTab[i] = (unitType*)malloc(sizeof(unitType));
+		if (!p_game->m_unitTab[i])
+			return -1;
 	}
 
+	dest.x = dest.y = dest2.x = 0;
+	dest.w = dest2.w = dest.h = dest2.h = 64;
+	fscanf_s(file, "%s\n", stringSprite, 255); //chemin Sprite
+	fscanf_s(file, "%hd %hd\n", &src.w, &src.h); //largeur et hauteur Sprite
+
+	for (int i = 0; i < NB_UNIT_TYPE; i++)
+	{
+		char c;
+		fscanf_s(file, "%c %hd %hd %d %d\n", &c, 1, &src.x, &src.y, &p_game->m_unitTab[i]->m_layerMask, &p_game->m_unitTab[i]->m_pmMax);
+		p_game->m_unitTab[i]->m_type = i;
+
+		src2.w = src.w;
+		src2.h = src.h;
+		src2.x = src.x;
+		src2.y = src.y + 64;
+
+		if (i == 0)
+		{
+			p_game->m_unitTab[i]->m_sprite[0] = LoadSprite(stringSprite, src, dest);
+			p_game->m_unitTab[i]->m_sprite[1] = LoadSprite(stringSprite, src2, dest2);
+		}
+		else
+		{
+			p_game->m_unitTab[i]->m_sprite[0] = LoadSpriteWithImage(stringSprite, p_game->m_unitTab[0]->m_sprite[0]->m_image, src, dest);
+			p_game->m_unitTab[i]->m_sprite[1] = LoadSpriteWithImage(stringSprite, p_game->m_unitTab[0]->m_sprite[0]->m_image, src2, dest2);
+		}
+	}
+
+	fclose(file);
 	return 1;
 }
 

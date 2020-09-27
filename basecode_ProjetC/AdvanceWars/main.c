@@ -20,7 +20,7 @@ int main(int argc, char** argv)
 
 		draw(window, g);
 	}
-
+	
 	TTF_Quit();
 	SDL_Quit();
 	return EXIT_SUCCESS;

@@ -27,10 +27,10 @@
     <ClCompile Include="renderLoop.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="game.c">
+    <ClCompile Include="unit.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="unit.c">
+    <ClCompile Include="game.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
