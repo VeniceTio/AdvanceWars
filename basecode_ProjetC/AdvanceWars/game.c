@@ -265,7 +265,7 @@ unit* GetUnitFromPos(game* p_game, int p_posX, int p_posY, int* p_playerID)
 		{
 			if (p_game->m_players[i]->m_units[j]->m_posX == p_posX && p_game->m_players[i]->m_units[j]->m_posY == p_posY) {
 				u = p_game->m_players[i]->m_units[j];
-				p_playerID = i;
+				*p_playerID = i;
 			}
 		}
 	}
