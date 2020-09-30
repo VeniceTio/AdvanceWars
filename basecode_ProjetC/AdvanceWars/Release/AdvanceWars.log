@@ -1,8 +1,8 @@
 ﻿  game.c
-C:\Users\Maxence\AdvanceWars\basecode_ProjetC\AdvanceWars\game.c(105,12): warning C4101: 'k' : variable locale non référencée
-C:\Users\Maxence\AdvanceWars\basecode_ProjetC\AdvanceWars\game.c(105,15): warning C4101: 'l' : variable locale non référencée
-C:\Users\Maxence\AdvanceWars\basecode_ProjetC\AdvanceWars\game.c(144,23): warning C4018: '<' : incompatibilité signed/unsigned
-C:\Users\Maxence\AdvanceWars\basecode_ProjetC\AdvanceWars\game.c(141,13): warning C4101: 'j' : variable locale non référencée
+C:\Users\Maxence\AdvanceWars\basecode_ProjetC\AdvanceWars\game.c(192,12): warning C4101: 'k' : variable locale non référencée
+C:\Users\Maxence\AdvanceWars\basecode_ProjetC\AdvanceWars\game.c(192,15): warning C4101: 'l' : variable locale non référencée
+C:\Users\Maxence\AdvanceWars\basecode_ProjetC\AdvanceWars\game.c(239,23): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\Maxence\AdvanceWars\basecode_ProjetC\AdvanceWars\game.c(236,13): warning C4101: 'j' : variable locale non référencée
   Génération de code en cours
   3 of 25 functions (12.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
