@@ -141,6 +141,8 @@ int LoadPlayer(game* p_game, int p_idPLayer, const char* p_path)
 		p_game->m_players[p_idPLayer]->m_units[i]->m_type = p_game->m_unitTab[typeUnit];
 		p_game->m_players[p_idPLayer]->m_units[i]->m_posX = posX;
 		p_game->m_players[p_idPLayer]->m_units[i]->m_posY = posY;
+		p_game->m_players[p_idPLayer]->m_units[i]->m_pm = p_game->m_unitTab[typeUnit]->m_pmMax;
+		p_game->m_players[p_idPLayer]->m_units[i]->m_hp = 10;
 		printf("P[%d] : I=%d | POSX = %d | POSY = %d\n", p_idPLayer, i, p_game->m_players[p_idPLayer]->m_units[i]->m_posX, p_game->m_players[p_idPLayer]->m_units[i]->m_posY);
 	}
 
