@@ -40,53 +40,59 @@ int LoadSprites(game* p_game, const char* p_path)
 int LoadUnitType(game* p_game, const char* p_path)
 {
 	// TODO :	Chargement des types d'unités
-	FILE* file = NULL;
-	file = fopen_s(&file, p_path, "r");
+	
+	FILE* file;
+	
 	SDL_Rect src, src2, dest, dest2;
-	char stringSprite[255];
+	char pathSprite[255];
 
+	fopen_s(&file, p_path, "r");
 	if (!file)
 	{
 		printf("ERREUR LOADUNIT\n");
 		return -1;
 	}
 		
-
+	
 	for (int i = 0; i < NB_UNIT_TYPE; i++)
 	{
-		p_game->m_unitTab[i] = (unitType*)malloc(sizeof(unitType));
+		p_game->m_unitTab[i] = (unitType*)calloc(1,sizeof(unitType));
 		if (!p_game->m_unitTab[i])
 			return -1;
 	}
 
-	dest.x = dest.y = dest2.x = 0;
-	dest.w = dest2.w = dest.h = dest2.h = 64;
-	fscanf_s(file, "%s\n", stringSprite, 255); //chemin Sprite
+	dest.x = dest.y = 0;
+	dest.w = dest.h = 64;
+
+	dest2.x = 0;
+	dest2.y = 64;
+	dest2.w = dest2.h = 64;
+
+	fscanf_s(file, "%s\n", pathSprite, 255); //chemin Sprite
 	fscanf_s(file, "%hd %hd\n", &src.w, &src.h); //largeur et hauteur Sprite
 
 	for (int i = 0; i < NB_UNIT_TYPE; i++)
 	{
 		char c;
 		fscanf_s(file, "%c %hd %hd %d %d\n", &c, 1, &src.x, &src.y, &p_game->m_unitTab[i]->m_layerMask, &p_game->m_unitTab[i]->m_pmMax);
+		//printf("I=%d | PM = %d\n", i, p_game->m_unitTab[0]->m_pmMax);
 		p_game->m_unitTab[i]->m_type = i;
 
 		src2.w = src.w;
 		src2.h = src.h;
 		src2.x = src.x;
 		src2.y = src.y + 64;
-
 		if (i == 0)
 		{
-			p_game->m_unitTab[i]->m_sprite[0] = LoadSprite(stringSprite, src, dest);
-			p_game->m_unitTab[i]->m_sprite[1] = LoadSprite(stringSprite, src2, dest2);
+			p_game->m_unitTab[i]->m_sprite[0] = LoadSprite(pathSprite, src, dest);
+			p_game->m_unitTab[i]->m_sprite[1] = LoadSprite(pathSprite, src2, dest2);
 		}
 		else
 		{
-			p_game->m_unitTab[i]->m_sprite[0] = LoadSpriteWithImage(stringSprite, p_game->m_unitTab[0]->m_sprite[0]->m_image, src, dest);
-			p_game->m_unitTab[i]->m_sprite[1] = LoadSpriteWithImage(stringSprite, p_game->m_unitTab[0]->m_sprite[1]->m_image, src2, dest2);
+			p_game->m_unitTab[i]->m_sprite[0] = LoadSpriteWithImage(pathSprite, p_game->m_unitTab[0]->m_sprite[0]->m_image, src, dest);
+			p_game->m_unitTab[i]->m_sprite[1] = LoadSpriteWithImage(pathSprite, p_game->m_unitTab[0]->m_sprite[1]->m_image, src2, dest2);
 		}
 	}
-
 	fclose(file);
 	return 1;
 }
@@ -95,14 +101,18 @@ int LoadPlayer(game* p_game, int p_idPLayer, const char* p_path)
 {
 	// TODO :	Chargement des joueurs
 	FILE* fileLoadPlayer = NULL;
-	fileLoadPlayer = fopen(p_path, "r");
+	fopen_s(&fileLoadPlayer,p_path, "r");
 
-	for (int i = 0; i < 2; i++)
+	if (!fileLoadPlayer)
 	{
-		p_game->m_players[i] = (player*)malloc(sizeof(player));
-		if (!p_game->m_players[i])
-			return -1;
+		printf("ERREUR LOADPLAYER");
+		return -1;
 	}
+	player* joueur;
+	joueur = (player*)malloc(sizeof(player));
+	p_game->m_players[p_idPLayer] = joueur;
+	if (!p_game->m_players[p_idPLayer])
+		return -1;
 
 	int nbUnit = 0;
 	fscanf_s(fileLoadPlayer, "%d\n", &nbUnit); //nombre d'unités
@@ -125,12 +135,13 @@ int LoadPlayer(game* p_game, int p_idPLayer, const char* p_path)
 
 	int typeUnit;
 	int posX, posY;
-	for (int i = 0; i < p_game->m_players[0]->m_nbUnit; i++)
+	for (int i = 0; i < nbUnit; i++)
 	{
 		fscanf_s(fileLoadPlayer, "%d %d %d\n", &typeUnit, &posX, &posY); //TypeUnité / posX / posY
 		p_game->m_players[p_idPLayer]->m_units[i]->m_type = p_game->m_unitTab[typeUnit];
 		p_game->m_players[p_idPLayer]->m_units[i]->m_posX = posX;
 		p_game->m_players[p_idPLayer]->m_units[i]->m_posY = posY;
+		printf("P[%d] : I=%d | POSX = %d | POSY = %d\n", p_idPLayer, i, p_game->m_players[p_idPLayer]->m_units[i]->m_posX, p_game->m_players[p_idPLayer]->m_units[i]->m_posY);
 	}
 
 	fclose(fileLoadPlayer);
@@ -196,16 +207,13 @@ void DrawGame(SDL_Surface* p_window, game* p_game)
 	
 	
 	// TODO :	Affichage des unités
+	//DrawSprite(p_window, p_game->m_players[1]->m_units[1]->m_type->m_sprite[1]);
 	for (int i = 0; i < 2; i++)
 	{
-		//printf("%d", p_game->m_players[0]->m_nbUnit);
 		for (int j = 0; j < p_game->m_players[i]->m_nbUnit; j++)
 		{
-			//DrawSprite(p_window, p_game->m_players[i]->m_units[j]->m_type->m_sprite[0]);
-			/*if (p_game->m_players[i]->m_units[j]->m_hp > 0)
-			{
-				DrawSprite(p_window, p_game->m_players[i]->m_units[j]->m_type->m_sprite[0]);
-			}*/
+			MoveSprite(p_game->m_players[i]->m_units[j]->m_type->m_sprite[i], (p_game->m_players[i]->m_units[j]->m_posX)*64, (p_game->m_players[i]->m_units[j]->m_posY)*64);
+			DrawSprite(p_window, p_game->m_players[i]->m_units[j]->m_type->m_sprite[i]);
 		}
 	}
 	

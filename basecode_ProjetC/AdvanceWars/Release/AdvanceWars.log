@@ -1,13 +1,12 @@
 ﻿  game.c
-C:\Users\Maxence\AdvanceWars\basecode_ProjetC\AdvanceWars\game.c(44,36): warning C4047: '=' : les niveaux d'indirection de 'FILE *' et de 'errno_t' sont différents
-C:\Users\Maxence\AdvanceWars\basecode_ProjetC\AdvanceWars\game.c(181,12): warning C4101: 'k' : variable locale non référencée
-C:\Users\Maxence\AdvanceWars\basecode_ProjetC\AdvanceWars\game.c(181,15): warning C4101: 'l' : variable locale non référencée
-C:\Users\Maxence\AdvanceWars\basecode_ProjetC\AdvanceWars\game.c(231,23): warning C4018: '<' : incompatibilité signed/unsigned
-C:\Users\Maxence\AdvanceWars\basecode_ProjetC\AdvanceWars\game.c(228,13): warning C4101: 'j' : variable locale non référencée
+C:\Users\Maxence\AdvanceWars\basecode_ProjetC\AdvanceWars\game.c(192,12): warning C4101: 'k' : variable locale non référencée
+C:\Users\Maxence\AdvanceWars\basecode_ProjetC\AdvanceWars\game.c(192,15): warning C4101: 'l' : variable locale non référencée
+C:\Users\Maxence\AdvanceWars\basecode_ProjetC\AdvanceWars\game.c(239,23): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\Maxence\AdvanceWars\basecode_ProjetC\AdvanceWars\game.c(236,13): warning C4101: 'j' : variable locale non référencée
   Génération de code en cours
-  4 of 25 functions (16.0%) were compiled, the rest were copied from previous compilation.
+  3 of 25 functions (12.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Fin de la génération du code
 SDLmain.lib(SDL_win32_main.obj) : warning LNK4099: PDB 'SDLmain.pdb' n'a pu être trouvé avec 'SDLmain.lib(SDL_win32_main.obj)' ou sur 'C:\Users\Maxence\AdvanceWars\basecode_ProjetC\bin\SDLmain.pdb' ; l'objet sera lié sans informations de débogage
   AdvanceWars.vcxproj -> C:\Users\Maxence\AdvanceWars\basecode_ProjetC\bin\AdvanceWars.exe
