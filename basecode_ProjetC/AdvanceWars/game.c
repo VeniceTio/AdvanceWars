@@ -39,7 +39,7 @@ int LoadSprites(game* p_game, const char* p_path)
 
 int LoadUnitType(game* p_game, const char* p_path)
 {
-	// TODO :	Chargement des types d'unités
+	// TODO :	Chargement des types d'unitï¿½s
 	
 	FILE* file;
 	
@@ -115,7 +115,7 @@ int LoadPlayer(game* p_game, int p_idPLayer, const char* p_path)
 		return -1;
 
 	int nbUnit = 0;
-	fscanf_s(fileLoadPlayer, "%d\n", &nbUnit); //nombre d'unités
+	fscanf_s(fileLoadPlayer, "%d\n", &nbUnit); //nombre d'unitï¿½s
 	p_game->m_players[p_idPLayer]->m_nbUnit = nbUnit;
 	printf("NbUnit : %d\n", nbUnit);
 
@@ -137,7 +137,7 @@ int LoadPlayer(game* p_game, int p_idPLayer, const char* p_path)
 	int posX, posY;
 	for (int i = 0; i < nbUnit; i++)
 	{
-		fscanf_s(fileLoadPlayer, "%d %d %d\n", &typeUnit, &posX, &posY); //TypeUnité / posX / posY
+		fscanf_s(fileLoadPlayer, "%d %d %d\n", &typeUnit, &posX, &posY); //TypeUnitï¿½ / posX / posY
 		p_game->m_players[p_idPLayer]->m_units[i]->m_type = p_game->m_unitTab[typeUnit];
 		p_game->m_players[p_idPLayer]->m_units[i]->m_posX = posX;
 		p_game->m_players[p_idPLayer]->m_units[i]->m_posY = posY;
@@ -203,10 +203,10 @@ void DrawGame(SDL_Surface* p_window, game* p_game)
 		}
 	}
 
-	// TODO :	Affichage des cases semi-transparentes pour indiquer la possibilité de marcher
+	// TODO :	Affichage des cases semi-transparentes pour indiquer la possibilitï¿½ de marcher
 	
 	
-	// TODO :	Affichage des unités
+	// TODO :	Affichage des unitï¿½s
 	//DrawSprite(p_window, p_game->m_players[1]->m_units[1]->m_type->m_sprite[1]);
 	for (int i = 0; i < 2; i++)
 	{
@@ -247,10 +247,19 @@ unit* GetSelectedUnit(game* p_game)
 
 unit* GetUnitFromPos(game* p_game, int p_posX, int p_posY, int* p_playerID)
 {
-	// TODO :	Fonction retournant le pointeur vers l'unité à la position passée en paramètre
-	//			p_playerID est une variable retournée s'il existe une unité à la position demandée
-
-	return NULL;
+	// TODO :	Fonction retournant le pointeur vers l'unitï¿½ ï¿½ la position passï¿½e en paramï¿½tre
+	//			p_playerID est une variable retournï¿½e s'il existe une unitï¿½ ï¿½ la position demandï¿½e
+	unit* u = NULL;
+	for (int i = 0; i < 2; i++) {
+		for (int j = 0; j < p_game->m_players[i]->m_nbUnit; j++)
+		{
+			if (p_game->m_players[i]->m_units[j]->m_posX == p_posX && p_game->m_players[i]->m_units[j]->m_posY == p_posY) {
+				u = p_game->m_players[i]->m_units[j];
+				p_playerID = i;
+			}
+		}
+	}
+	return u;
 }
 
 void CalculateMovement(graph* p_graph, unit* p_unit)
@@ -260,11 +269,11 @@ void CalculateMovement(graph* p_graph, unit* p_unit)
 
 void ResetPlayers(game* p_game)
 {
-	// TODO :	Initialises les variables des unité en début de tour
+	// TODO :	Initialises les variables des unitï¿½ en dï¿½but de tour
 
 }
 
 void Atttack(game* p_game, unit* p_attacker, unit* p_defender)
 {
-	// TODO :	Calculer les dégats des l'attaquand sur le défenseur
+	// TODO :	Calculer les dï¿½gats des l'attaquand sur le dï¿½fenseur
 }
