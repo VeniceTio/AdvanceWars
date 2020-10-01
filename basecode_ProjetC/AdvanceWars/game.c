@@ -220,7 +220,7 @@ void DrawGame(SDL_Surface* p_window, game* p_game)
 		int size = p_game->m_graph->m_sizeX * p_game->m_graph->m_sizeY;
 		//printf("unit selectionné \n");
 		for (size_t i = 0; i < size; i++) {
-			if (u->m_walkGraph[i]->m_distance <= 0) {
+			if (u->m_walkGraph[i]->m_distance <= u->m_pm && u->m_walkGraph[i]->m_distance>=0) {
 				//printf("unit selectionné %d %d\n", (i % p_game->m_graph->m_sizeX), ((int)i / p_game->m_graph->m_sizeX));
 				MoveSprite(walkSquare, (i % p_game->m_graph->m_sizeX), ((int)i / p_game->m_graph->m_sizeX));
 				DrawSprite(p_window, walkSquare);
