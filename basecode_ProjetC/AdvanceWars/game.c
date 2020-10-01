@@ -222,6 +222,7 @@ void DrawGame(SDL_Surface* p_window, game* p_game)
 		//printf("unit selectionné \n");
 		for (size_t i = 0; i < size; i++) {
 			if (u->m_walkGraph[i]->m_distance <= u->m_pm && u->m_walkGraph[i]->m_distance>0) {
+				printf("HP : %d\n", u->m_hp);
 				//printf("unit selectionné %d %d\n", (i % p_game->m_graph->m_sizeX), ((int)i / p_game->m_graph->m_sizeX));
 				MoveSprite(walkSquare, ((i%p_game->m_graph->m_sizeX)*64), (int)trunc(i / p_game->m_graph->m_sizeX)*64);
 				DrawSprite(p_window, walkSquare);
@@ -234,8 +235,12 @@ void DrawGame(SDL_Surface* p_window, game* p_game)
 	{
 		for (int j = 0; j < p_game->m_players[i]->m_nbUnit; j++)
 		{
-			MoveSprite(p_game->m_players[i]->m_units[j]->m_type->m_sprite[i], (p_game->m_players[i]->m_units[j]->m_posX)*64, (p_game->m_players[i]->m_units[j]->m_posY)*64);
-			DrawSprite(p_window, p_game->m_players[i]->m_units[j]->m_type->m_sprite[i]);
+			if (p_game->m_players[i]->m_units[j]->m_hp > 0)
+			{
+				MoveSprite(p_game->m_players[i]->m_units[j]->m_type->m_sprite[i], (p_game->m_players[i]->m_units[j]->m_posX) * 64, (p_game->m_players[i]->m_units[j]->m_posY) * 64);
+				DrawSprite(p_window, p_game->m_players[i]->m_units[j]->m_type->m_sprite[i]);
+			}
+			
 		}
 	}
 	
@@ -316,20 +321,25 @@ void Atttack(game* p_game, unit* p_attacker, unit* p_defender)
 	xDamageChart = p_attacker->m_type->m_type;
 	yDamageChart = p_defender->m_type->m_type;
 	B = s_damageChart[xDamageChart][yDamageChart];
+	printf("B = %f | ", B);
 
 	// Calcul PV attaquant (A)
 	A = p_attacker->m_hp;
+	printf("A = %f | ", A);
 
 	// Calcul Défense terrain (R)
 	int posGlobal;
 	posGlobal = p_defender->m_posX + (p_defender->m_posY * p_game->m_graph->m_sizeX);
 	R = s_defenseGround[p_game->m_graph->m_data[posGlobal]->m_layerID];
+	printf("R = %f | ", R);
 
 	// Calcul PV unité defensive (H)
 	H = p_defender->m_hp;
+	printf("H = %f | ", H);
 
 	// Calcul dommages (D)
-	D = B * A * 0.1 * (1 - R * (0.1 - 0.01 * (10. - H)));
+	D = (B * A * 0.1 * (1 - R * (0.1 - 0.01 * (10. - H))))/10;
+	printf("D = %d\n", D);
 
 	p_defender->m_hp = p_defender->m_hp - D;
 }
