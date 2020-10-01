@@ -139,6 +139,19 @@ int update(game* p_game)
 	if (p_game->m_rclic)
 	{
 		// TODO :	Action(s) suite à un clic droit
+		int caseX, caseY, caseGlobal;
+		caseX = (p_game->m_mousePosX/64) % p_game->m_graph->m_sizeX;
+		caseY =  (p_game->m_mousePosY/64);
+		caseGlobal = caseX + (caseY * p_game->m_graph->m_sizeX);
+		//printf("X : %d | Y: %d | Global : %d\n", caseX, caseY, caseGlobal);
+
+		unit* u = GetSelectedUnit(p_game);
+		if (u != NULL)
+			if (p_game->m_rclic == 1 && u->m_walkGraph[caseGlobal]->m_distance <= u->m_pm && u->m_walkGraph[caseGlobal]->m_distance >= 0)
+			{
+				u->m_posX = caseX;
+				u->m_posY = caseY;
+			}
 	}
 
 	return 0;

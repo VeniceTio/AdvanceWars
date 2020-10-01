@@ -210,26 +210,26 @@ void DrawGame(SDL_Surface* p_window, game* p_game)
 
 	// TODO :	Affichage des cases semi-transparentes pour indiquer la possibilité de marcher
 	sprite* walkSquare = (sprite*)calloc(sizeof(sprite),1);
-	walkSquare->m_destRect = dest;
+	walkSquare->m_srcRect = dest;
 	walkSquare->m_destRect = dest;
 	walkSquare->m_image = p_game->m_surfaceWalk;
-
+	
 	unit* u = GetSelectedUnit(p_game);
+	
 	if (u != NULL) {
 		CalculateMovement(p_game->m_graph, u);
 		int size = p_game->m_graph->m_sizeX * p_game->m_graph->m_sizeY;
 		//printf("unit selectionné \n");
 		for (size_t i = 0; i < size; i++) {
-			if (u->m_walkGraph[i]->m_distance <= u->m_pm && u->m_walkGraph[i]->m_distance>=0) {
+			if (u->m_walkGraph[i]->m_distance <= u->m_pm && u->m_walkGraph[i]->m_distance>0) {
 				//printf("unit selectionné %d %d\n", (i % p_game->m_graph->m_sizeX), ((int)i / p_game->m_graph->m_sizeX));
-				MoveSprite(walkSquare, (i % p_game->m_graph->m_sizeX), ((int)i / p_game->m_graph->m_sizeX));
+				MoveSprite(walkSquare, ((i%p_game->m_graph->m_sizeX)*64), (int)trunc(i / p_game->m_graph->m_sizeX)*64);
 				DrawSprite(p_window, walkSquare);
 			}
 		}
 	}
 	
 	// TODO :	Affichage des unités
-	//DrawSprite(p_window, p_game->m_players[1]->m_units[1]->m_type->m_sprite[1]);
 	for (int i = 0; i < 2; i++)
 	{
 		for (int j = 0; j < p_game->m_players[i]->m_nbUnit; j++)
