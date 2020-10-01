@@ -143,6 +143,7 @@ int LoadPlayer(game* p_game, int p_idPLayer, const char* p_path)
 		p_game->m_players[p_idPLayer]->m_units[i]->m_posY = posY;
 		p_game->m_players[p_idPLayer]->m_units[i]->m_pm = p_game->m_unitTab[typeUnit]->m_pmMax;
 		p_game->m_players[p_idPLayer]->m_units[i]->m_hp = 10;
+		p_game->m_players[p_idPLayer]->m_units[i]->m_canFire = 1;
 		printf("P[%d] : I=%d | POSX = %d | POSY = %d\n", p_idPLayer, i, p_game->m_players[p_idPLayer]->m_units[i]->m_posX, p_game->m_players[p_idPLayer]->m_units[i]->m_posY);
 	}
 
@@ -217,7 +218,6 @@ void DrawGame(SDL_Surface* p_window, game* p_game)
 	unit* u = GetSelectedUnit(p_game);
 	
 	if (u != NULL) {
-		CalculateMovement(p_game->m_graph, u);
 		int size = p_game->m_graph->m_sizeX * p_game->m_graph->m_sizeY;
 		//printf("unit selectionné \n");
 		for (size_t i = 0; i < size; i++) {
@@ -292,6 +292,15 @@ void CalculateMovement(graph* p_graph, unit* p_unit)
 void ResetPlayers(game* p_game)
 {
 	// TODO :	Initialises les variables des unité en début de tour
+	for (int i = 0; i < 2; i++) {
+		for (int j = 0; j < p_game->m_players[i]->m_nbUnit; j++)
+		{
+			p_game->m_players[i]->m_units[j]->m_canFire = 1;
+			p_game->m_players[i]->m_units[j]->m_pm = p_game->m_players[i]->m_units[j]->m_type->m_pmMax;
+			p_game->m_players[i]->m_units[j]->m_selected = 0;
+			//FreeDijkstra(p_game->m_players[i]->m_units[j]->m_walkGraph, p_game->m_graph->m_sizeX * p_game->m_graph->m_sizeY);
+		}
+	}
 
 }
 
