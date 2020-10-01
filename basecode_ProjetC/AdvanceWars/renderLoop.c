@@ -111,47 +111,82 @@ int interaction(SDL_Event* p_e, game* p_game)
 
 int update(game* p_game)
 {
+	unit* us = GetSelectedUnit(p_game);
+	int playerId = -1;
+	unit* u = GetUnitFromPos(p_game, p_game->m_mousePosX / 64, p_game->m_mousePosY / 64, &playerId);
 	if (p_game->m_lclic)
 	{
 		// TODO :	Action(s) suite à un clic gauche
-		int playerId = -1;
-		//printf("clique : %d %d \n", p_game->m_mousePosX/64, p_game->m_mousePosY/64);
-		unit* us = GetSelectedUnit(p_game);
-		unit* u = GetUnitFromPos(p_game, p_game->m_mousePosX / 64, p_game->m_mousePosY / 64, &playerId);
-		if (u != NULL) {
-			if (us != NULL) {
-				us->m_selected = 0;
+		if (us == NULL) {
+			//printf("clique : %d %d \n", p_game->m_mousePosX/64, p_game->m_mousePosY/64);
+			if (u != NULL) {
+				if (playerId == p_game->m_playerTurn) {
+					u->m_selected = 1;
+					CalculateMovement(p_game->m_graph, u);
+
+				}
+				//printf(" click droit : SelectedUnit %d playerId %d \n", u->m_type->m_type, playerId);
 			}
-			if (playerId == p_game->m_playerTurn) {
-				u->m_selected = 1;
-			}
-			//printf(" click droit : SelectedUnit %d playerId %d \n", u->m_type->m_type, playerId);
 		}
 		else {
-			if (us != NULL) {
-				us->m_selected = 0;
-				//printf(" click droit : UnSelectedUnit %d \n", u->m_type->m_type);
+			int caseX, caseY, caseGlobal, distance;
+			caseX = (p_game->m_mousePosX / 64) % p_game->m_graph->m_sizeX;
+			caseY = (p_game->m_mousePosY / 64);
+			caseGlobal = caseX + (caseY * p_game->m_graph->m_sizeX);
+			//printf("X : %d | Y: %d | Global : %d\n", caseX, caseY, caseGlobal);
+			if (u == NULL) {
+				distance = us->m_walkGraph[caseGlobal]->m_distance;
+				if (distance <= us->m_pm && us->m_walkGraph[caseGlobal]->m_distance > 0)
+				{
+					us->m_posX = caseX;
+					us->m_posY = caseY;
+					us->m_pm -= distance;
+					CalculateMovement(p_game->m_graph, us);
+				}
+			}
+			else {
+				if (playerId == p_game->m_playerTurn) {
+					us->m_selected = 0;
+					u->m_selected = 1;
+					CalculateMovement(p_game->m_graph, u);
+				}
+				else if (us->m_canFire) {
+					distance = GetManhattanDistance(p_game->m_graph->m_data[us->m_posX + us->m_posY * p_game->m_graph->m_sizeX], p_game->m_graph->m_data[u->m_posX + u->m_posY * p_game->m_graph->m_sizeX]);
+					if (us->m_type->m_type == 3) {
+						if (distance < 6 && distance > 1) {
+							Atttack(p_game, us, u);
+							us->m_canFire = 0;
+							printf("attack d'artilerie à %d de distance \n", distance);
+						}
+						else {
+							u->m_selected = 1;
+							CalculateMovement(p_game->m_graph, u);
+						}
+					}
+					else {
+						if (distance == 1) {
+							Atttack(p_game, us, u);
+							if (u->m_type->m_type != 3) {
+								Atttack(p_game, u, us);
+							}
+							us->m_canFire = 0;
+							printf("attack d'artilerie à %d de distance \n", distance);
+						}
+						else {
+							u->m_selected = 1;
+							CalculateMovement(p_game->m_graph, u);
+						}
+					}
+					us->m_selected = 0;
+				}
+				
 			}
 		}
-
 	}
 
 	if (p_game->m_rclic)
 	{
 		// TODO :	Action(s) suite à un clic droit
-		int caseX, caseY, caseGlobal;
-		caseX = (p_game->m_mousePosX/64) % p_game->m_graph->m_sizeX;
-		caseY =  (p_game->m_mousePosY/64);
-		caseGlobal = caseX + (caseY * p_game->m_graph->m_sizeX);
-		//printf("X : %d | Y: %d | Global : %d\n", caseX, caseY, caseGlobal);
-
-		unit* u = GetSelectedUnit(p_game);
-		if (u != NULL)
-			if (p_game->m_rclic == 1 && u->m_walkGraph[caseGlobal]->m_distance <= u->m_pm && u->m_walkGraph[caseGlobal]->m_distance >= 0)
-			{
-				u->m_posX = caseX;
-				u->m_posY = caseY;
-			}
 	}
 
 	return 0;
