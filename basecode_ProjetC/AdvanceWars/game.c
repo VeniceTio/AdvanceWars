@@ -297,5 +297,30 @@ void ResetPlayers(game* p_game)
 
 void Atttack(game* p_game, unit* p_attacker, unit* p_defender)
 {
-	// TODO :	Calculer les dégats des l'attaquand sur le défenseur
+	// TODO :	Calculer les dégats des l'attaquant sur le défenseur
+
+	int D;
+	float B, A, R, H;
+	int xDamageChart, yDamageChart;
+
+	// Calcul Efficacité (B)
+	xDamageChart = p_attacker->m_type->m_type;
+	yDamageChart = p_defender->m_type->m_type;
+	B = s_damageChart[xDamageChart][yDamageChart];
+
+	// Calcul PV attaquant (A)
+	A = p_attacker->m_hp;
+
+	// Calcul Défense terrain (R)
+	int posGlobal;
+	posGlobal = p_defender->m_posX + (p_defender->m_posY * p_game->m_graph->m_sizeX);
+	R = s_defenseGround[p_game->m_graph->m_data[posGlobal]->m_layerID];
+
+	// Calcul PV unité defensive (H)
+	H = p_defender->m_hp;
+
+	// Calcul dommages (D)
+	D = B * A * 0.1 * (1 - R * (0.1 - 0.01 * (10. - H)));
+
+	p_defender->m_hp = p_defender->m_hp - D;
 }
