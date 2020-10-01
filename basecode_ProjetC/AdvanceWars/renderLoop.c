@@ -116,17 +116,20 @@ int update(game* p_game)
 		// TODO :	Action(s) suite à un clic gauche
 		int playerId = -1;
 		//printf("clique : %d %d \n", p_game->m_mousePosX/64, p_game->m_mousePosY/64);
+		unit* us = GetSelectedUnit(p_game);
 		unit* u = GetUnitFromPos(p_game, p_game->m_mousePosX / 64, p_game->m_mousePosY / 64, &playerId);
 		if (u != NULL) {
+			if (us != NULL) {
+				us->m_selected = 0;
+			}
 			if (playerId == p_game->m_playerTurn) {
 				u->m_selected = 1;
 			}
 			//printf(" click droit : SelectedUnit %d playerId %d \n", u->m_type->m_type, playerId);
 		}
 		else {
-			u = GetSelectedUnit(p_game);
-			if (u != NULL) {
-				u->m_selected = 0;
+			if (us != NULL) {
+				us->m_selected = 0;
 				//printf(" click droit : UnSelectedUnit %d \n", u->m_type->m_type);
 			}
 		}
