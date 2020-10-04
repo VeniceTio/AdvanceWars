@@ -155,6 +155,9 @@ game* InitGame()
 {
 	game* result = NULL;
 	int i;
+	SDL_Rect dest;
+	dest.x = dest.y = 0;
+	dest.w = dest.h = 64;
 
 	result = (game*)calloc(1, sizeof(game));
 	if (!result)
@@ -185,6 +188,19 @@ game* InitGame()
 	result->m_surfaceWalk = SDL_LoadBMP("./data/walkLayer.bmp");
 	SDL_SetAlpha(result->m_surfaceWalk, SDL_SRCALPHA, 128);
 
+	sprite* walkSquare = (sprite*)calloc(sizeof(sprite), 1);
+	walkSquare->m_srcRect = dest;
+	walkSquare->m_destRect = dest;
+	walkSquare->m_image = result->m_surfaceWalk;
+	result->m_surfaceFX[0] = walkSquare;
+
+	sprite* fireSquare = (sprite*)calloc(sizeof(sprite), 1);
+	fireSquare->m_image = SDL_LoadBMP("./data/fireLayer.bmp");
+	SDL_SetAlpha(fireSquare->m_image, SDL_SRCALPHA, 128);
+	fireSquare->m_srcRect = dest;
+	fireSquare->m_destRect = dest;
+	result->m_surfaceFX[1] = fireSquare;
+
 	result->m_playerTurn = 0;
 
 	return result;
@@ -210,35 +226,21 @@ void DrawGame(SDL_Surface* p_window, game* p_game)
 	}
 
 	// TODO :	Affichage des cases semi-transparentes pour indiquer la possibilité de marcher
-	sprite* walkSquare = (sprite*)calloc(sizeof(sprite),1);
-	walkSquare->m_srcRect = dest;
-	walkSquare->m_destRect = dest;
-	walkSquare->m_image = p_game->m_surfaceWalk;
 
-	sprite* fireSquare = (sprite*)calloc(sizeof(sprite), 1);
-	fireSquare->m_image = SDL_LoadBMP("./data/fireLayer.bmp");
-	SDL_SetAlpha(fireSquare->m_image, SDL_SRCALPHA, 128);
-	fireSquare->m_srcRect = dest;
-	fireSquare->m_destRect = dest;
 	
 	unit* u = GetSelectedUnit(p_game);
 	int presenceUnit = 0;
 	int posGlobalUnit;
-	int playerTurnOpposite;
+	int playerTurnOpposite = !p_game->m_playerTurn;
 	int distance;
-	if (p_game->m_playerTurn == 0) {
-		playerTurnOpposite = 1;
-	}
-	else{
-		playerTurnOpposite = 0;
-	}
-	
+
+	//printf("playerturnOpposite : %d", playerTurnOpposite);
 	
 	if (u != NULL) {
 		int size = p_game->m_graph->m_sizeX * p_game->m_graph->m_sizeY;
 		//printf("unit selectionné \n");
 		for (size_t i = 0; i < size; i++) {
-			if (u->m_walkGraph[i]->m_distance <= u->m_pm && u->m_walkGraph[i]->m_distance>0) {
+			if (u->m_walkGraph[i]->m_distance <= u->m_pm && u->m_walkGraph[i]->m_distance > 0) {
 				for (int j = 0; j < p_game->m_players[playerTurnOpposite]->m_nbUnit; j++)
 				{
 					posGlobalUnit = p_game->m_players[playerTurnOpposite]->m_units[j]->m_posX + (p_game->m_players[playerTurnOpposite]->m_units[j]->m_posY * p_game->m_graph->m_sizeX);
@@ -251,21 +253,21 @@ void DrawGame(SDL_Surface* p_window, game* p_game)
 				//printf("unit selectionné %d %d\n", (i % p_game->m_graph->m_sizeX), ((int)i / p_game->m_graph->m_sizeX));
 				if (presenceUnit == 0)
 				{
-					MoveSprite(walkSquare, ((i % p_game->m_graph->m_sizeX) * 64), (int)trunc(i / p_game->m_graph->m_sizeX) * 64);
-					DrawSprite(p_window, walkSquare);
+					MoveSprite(p_game->m_surfaceFX[0], ((i % p_game->m_graph->m_sizeX) * 64), (int)trunc(i / p_game->m_graph->m_sizeX) * 64);
+					DrawSprite(p_window, p_game->m_surfaceFX[0]);
 				}
 				
 				distance = GetManhattanDistance(p_game->m_graph->m_data[u->m_posX + u->m_posY * p_game->m_graph->m_sizeX], p_game->m_graph->m_data[i]);
-				if(u->m_type->m_type == 3 && presenceUnit == 1 && u->m_canFire == 1 && distance >= 2 && distance <= 5)
+				if(u->m_type->m_type == 3 && presenceUnit == 1 && u->m_canFire == 1 && distance > 1 && distance < 6)
 				{
-					MoveSprite(fireSquare, ((i % p_game->m_graph->m_sizeX) * 64), (int)trunc(i / p_game->m_graph->m_sizeX) * 64);
-					DrawSprite(p_window, fireSquare);
+					MoveSprite(p_game->m_surfaceFX[1], ((i % p_game->m_graph->m_sizeX) * 64), (int)trunc(i / p_game->m_graph->m_sizeX) * 64);
+					DrawSprite(p_window, p_game->m_surfaceFX[1]);
 				}
 				
 				if (u->m_type->m_type != 3 && presenceUnit == 1 && u->m_canFire == 1 && distance == 1)
 				{
-					MoveSprite(fireSquare, ((i % p_game->m_graph->m_sizeX) * 64), (int)trunc(i / p_game->m_graph->m_sizeX) * 64);
-					DrawSprite(p_window, fireSquare);
+					MoveSprite(p_game->m_surfaceFX[1], ((i % p_game->m_graph->m_sizeX) * 64), (int)trunc(i / p_game->m_graph->m_sizeX) * 64);
+					DrawSprite(p_window, p_game->m_surfaceFX[1]);
 				}
 				presenceUnit = 0;
 			}
@@ -364,25 +366,25 @@ void Atttack(game* p_game, unit* p_attacker, unit* p_defender)
 	xDamageChart = p_attacker->m_type->m_type;
 	yDamageChart = p_defender->m_type->m_type;
 	B = s_damageChart[xDamageChart][yDamageChart];
-	printf("B = %f | ", B);
+	//printf("B = %f | ", B);
 
 	// Calcul PV attaquant (A)
 	A = p_attacker->m_hp;
-	printf("A = %f | ", A);
+	//printf("A = %f | ", A);
 
 	// Calcul Défense terrain (R)
 	int posGlobal;
 	posGlobal = p_defender->m_posX + (p_defender->m_posY * p_game->m_graph->m_sizeX);
 	R = s_defenseGround[p_game->m_graph->m_data[posGlobal]->m_layerID];
-	printf("R = %f | ", R);
+	//printf("R = %f | ", R);
 
 	// Calcul PV unité defensive (H)
 	H = p_defender->m_hp;
-	printf("H = %f | ", H);
+	//printf("H = %f | ", H);
 
 	// Calcul dommages (D)
 	D = (B * A * 0.1 * (1 - R * (0.1 - 0.01 * (10. - H))))/10;
-	printf("D = %d\n", D);
+	//printf("D = %d\n", D);
 
 	p_defender->m_hp = p_defender->m_hp - D;
 }

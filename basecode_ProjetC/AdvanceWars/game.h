@@ -18,6 +18,7 @@ struct sGame
 	graph*			m_graph;
 
 	SDL_Surface*	m_surfaceWalk;
+	sprite*			m_surfaceFX[2];
 
 	TTF_Font *		m_font;
 	TTF_Font *		m_fontHP;
