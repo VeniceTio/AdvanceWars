@@ -210,9 +210,6 @@ void DrawGame(SDL_Surface* p_window, game* p_game)
 {
 	int i, j, k, l;
 	int index = 0;
-	SDL_Rect dest;
-	dest.x = dest.y = 0;
-	dest.w = dest.h = 64;
 
 	// Affichage du niveau
 	for (i = 0; i < p_game->m_graph->m_sizeY; i++)
@@ -229,10 +226,13 @@ void DrawGame(SDL_Surface* p_window, game* p_game)
 
 	
 	unit* u = GetSelectedUnit(p_game);
+	unit* us;
 	int presenceUnit = 0;
 	int posGlobalUnit;
 	int playerTurnOpposite = !p_game->m_playerTurn;
 	int distance;
+	int playerId = -1;
+
 
 	//printf("playerturnOpposite : %d", playerTurnOpposite);
 	
@@ -240,38 +240,21 @@ void DrawGame(SDL_Surface* p_window, game* p_game)
 		int size = p_game->m_graph->m_sizeX * p_game->m_graph->m_sizeY;
 		//printf("unit selectionné \n");
 		for (size_t i = 0; i < size; i++) {
-			if (u->m_walkGraph[i]->m_distance <= u->m_pm && u->m_walkGraph[i]->m_distance > 0) {
-				for (int j = 0; j < p_game->m_players[playerTurnOpposite]->m_nbUnit; j++)
-				{
-					posGlobalUnit = p_game->m_players[playerTurnOpposite]->m_units[j]->m_posX + (p_game->m_players[playerTurnOpposite]->m_units[j]->m_posY * p_game->m_graph->m_sizeX);
-					if (posGlobalUnit == i && p_game->m_players[playerTurnOpposite]->m_units[j]->m_hp > 0)
-					{
-						presenceUnit = 1;
-					}
+			us = GetUnitFromPos(p_game, i % p_game->m_graph->m_sizeX, trunc(i / p_game->m_graph->m_sizeX),&playerId);
+			if (us != NULL) {
+				distance = GetManhattanDistance(p_game->m_graph->m_data[u->m_posX + u->m_posY * p_game->m_graph->m_sizeX], p_game->m_graph->m_data[i]);
+				if (playerId == playerTurnOpposite && u->m_canFire && ((u->m_type->m_type == 3 && distance > 1 && distance < 6) ||
+					(u->m_type->m_type != 3 && distance == 1))) {
+					MoveSprite(p_game->m_surfaceFX[1], ((i % p_game->m_graph->m_sizeX) * 64), (int)trunc(i / p_game->m_graph->m_sizeX) * 64);
+					DrawSprite(p_window, p_game->m_surfaceFX[1]);
 				}
-				//printf("HP : %d\n", u->m_hp);
-				//printf("unit selectionné %d %d\n", (i % p_game->m_graph->m_sizeX), ((int)i / p_game->m_graph->m_sizeX));
-				if (presenceUnit == 0)
-				{
+			}
+			else {
+				if (u->m_walkGraph[i]->m_distance <= u->m_pm && u->m_walkGraph[i]->m_distance > 0) {
 					MoveSprite(p_game->m_surfaceFX[0], ((i % p_game->m_graph->m_sizeX) * 64), (int)trunc(i / p_game->m_graph->m_sizeX) * 64);
 					DrawSprite(p_window, p_game->m_surfaceFX[0]);
 				}
-				
-				distance = GetManhattanDistance(p_game->m_graph->m_data[u->m_posX + u->m_posY * p_game->m_graph->m_sizeX], p_game->m_graph->m_data[i]);
-				if(u->m_type->m_type == 3 && presenceUnit == 1 && u->m_canFire == 1 && distance > 1 && distance < 6)
-				{
-					MoveSprite(p_game->m_surfaceFX[1], ((i % p_game->m_graph->m_sizeX) * 64), (int)trunc(i / p_game->m_graph->m_sizeX) * 64);
-					DrawSprite(p_window, p_game->m_surfaceFX[1]);
-				}
-				
-				if (u->m_type->m_type != 3 && presenceUnit == 1 && u->m_canFire == 1 && distance == 1)
-				{
-					MoveSprite(p_game->m_surfaceFX[1], ((i % p_game->m_graph->m_sizeX) * 64), (int)trunc(i / p_game->m_graph->m_sizeX) * 64);
-					DrawSprite(p_window, p_game->m_surfaceFX[1]);
-				}
-				presenceUnit = 0;
-			}
-			
+			}			
 		}
 	}
 	
