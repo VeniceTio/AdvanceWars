@@ -156,7 +156,7 @@ int update(game* p_game)
 						if (distance < 6 && distance > 1) {
 							Atttack(p_game, us, u);
 							us->m_canFire = 0;
-							printf("attack d'artilerie à %d de distance \n", distance);
+							//printf("attack d'artilerie à %d de distance \n", distance);
 						}
 						else {
 							u->m_selected = 1;
@@ -166,16 +166,26 @@ int update(game* p_game)
 					else {
 						if (distance == 1) {
 							Atttack(p_game, us, u);
-							if (u->m_type->m_type != 3) {
+							if (u->m_type->m_type != 3 && u->m_hp != 0) {
 								Atttack(p_game, u, us);
 							}
 							us->m_canFire = 0;
-							printf("attack d'artilerie à %d de distance \n", distance);
+							//printf("attack d'artilerie à %d de distance \n", distance);
 						}
 						else {
 							u->m_selected = 1;
 							CalculateMovement(p_game->m_graph, u);
 						}
+					}
+					if (us->m_hp <= 0) {
+						//printf("us mort");
+						us->m_posX = -1;
+						us->m_posY = -1;
+					}
+					if (u->m_hp <= 0) {
+						//printf("u mort");
+						u->m_posX = -1;
+						u->m_posY = -1;
 					}
 					us->m_selected = 0;
 				}
